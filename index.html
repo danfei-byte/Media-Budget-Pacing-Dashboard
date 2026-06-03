@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ad Budget Pacing Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Client Media Pacing</p>
+        <h1>Budget Pacing Dashboard</h1>
+      </div>
+      <div class="actions">
+        <button id="shareButton" type="button" title="Copy share link">Share</button>
+        <button id="csvButton" type="button" title="Download CSV">CSV</button>
+        <button id="resetButton" type="button" title="Reload May 20 sample">Sample</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary-band" aria-label="Summary">
+        <div class="metric">
+          <span>Total Gross Budget</span>
+          <strong id="totalBudget">$0</strong>
+        </div>
+        <div class="metric">
+          <span>MTD Gross Spend</span>
+          <strong id="totalSpend">$0</strong>
+        </div>
+        <div class="metric">
+          <span>Remaining Gross</span>
+          <strong id="totalRemaining">$0</strong>
+        </div>
+        <div class="metric">
+          <span>Spend vs Timing</span>
+          <strong id="totalDelta">0%</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="input-panel" aria-label="Inputs">
+          <div class="panel-head">
+            <h2>Inputs</h2>
+            <span id="saveState">Saved</span>
+          </div>
+
+          <div class="date-grid">
+            <label class="wide">
+              Snapshot
+              <select id="snapshotSelect"></select>
+            </label>
+            <label>
+              Start
+              <input id="startDate" type="date" />
+            </label>
+            <label>
+              Record
+              <input id="recordDate" type="date" />
+            </label>
+            <label>
+              End
+              <input id="endDate" type="date" />
+            </label>
+            <label>
+              Agency fee
+              <input id="agencyFee" type="number" min="0" max="50" step="0.1" />
+            </label>
+            <label>
+              Audience CPM
+              <input id="audienceCpm" type="number" min="0" step="0.01" />
+            </label>
+          </div>
+          <div class="snapshot-actions">
+            <button id="newSnapshotButton" type="button">New Record</button>
+            <button id="deleteSnapshotButton" type="button">Delete Record</button>
+          </div>
+
+          <h3>Gross Planned Budget</h3>
+          <div class="table-wrap">
+            <table class="editable-table" id="budgetTable">
+              <thead>
+                <tr>
+                  <th>Campaign</th>
+                  <th>Meta</th>
+                  <th>Programmatic</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <h3>MTD Platform Actuals</h3>
+          <div class="table-wrap">
+            <table class="editable-table compact" id="actualsTable">
+              <thead>
+                <tr>
+                  <th>Campaign</th>
+                  <th>Platform</th>
+                  <th>Net Spend</th>
+                  <th>Impressions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </aside>
+
+        <section class="dashboard" aria-label="Dashboard">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Record date <span id="recordLabel"></span></p>
+              <h2>Campaign Pacing</h2>
+            </div>
+            <div class="timing-pill">
+              <span>Timing</span>
+              <strong id="timingPercent">0%</strong>
+            </div>
+          </div>
+
+          <div id="campaignCards" class="campaign-grid"></div>
+
+          <div class="visual-grid">
+            <section class="chart-panel">
+              <h3>Spend Percent By Channel</h3>
+              <div id="barChart" class="bar-chart"></div>
+            </section>
+            <section class="chart-panel">
+              <h3>Remaining Gross Budget</h3>
+              <div id="remainingChart" class="remaining-chart"></div>
+            </section>
+          </div>
+
+          <section class="output-panel">
+            <div class="section-head slim">
+              <h2>Final Numbers</h2>
+              <span>Gross spend includes audience fee when applicable</span>
+            </div>
+            <div class="table-wrap">
+              <table id="outputTable">
+                <thead>
+                  <tr>
+                    <th>Campaign</th>
+                    <th>Channel</th>
+                    <th>MTD Gross Spend</th>
+                    <th>Spend %</th>
+                    <th>Remaining Gross</th>
+                    <th>Audience Fee</th>
+                    <th>Gap</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
