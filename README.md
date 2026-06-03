@@ -1,6 +1,6 @@
 # Ad Budget Pacing Dashboard
 
-View the live dashbaord site here: https://danfei-byte.github.io/budget-pacing-dashboard/
+View the live dashbaord site here: [https://danfei-byte.github.io/budget-pacing-dashboard/](https://danfei-byte.github.io/Media-Budget-Pacing-Dashboard/)
 
 Serve this folder from a static host or local web server, then open the served URL in a browser.
 
