@@ -1,5 +1,7 @@
 # Ad Budget Pacing Dashboard
 
+View the live dashbaord site here: https://danfei-byte.github.io/budget-pacing-dashboard/
+
 Serve this folder from a static host or local web server, then open the served URL in a browser.
 
 Local example:
